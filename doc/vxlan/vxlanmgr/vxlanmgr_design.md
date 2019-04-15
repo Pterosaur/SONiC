@@ -29,8 +29,8 @@
         * [4.2.3 STATE_VXLAN_TABLE](#423-STATE_VXLAN_TABLE)
 * [5: Referenced linux commands](#5-Referenced-linux-commands)
     * [device naming rules](#device-naming-rules)
-    * [Create Vxlan commands](#51-create-vxlan-commands)
-    * [Delete Vxlan commands](#52-delete-vxlan-commands)
+    * [5.1 Create Vxlan commands](#51-create-vxlan-commands)
+    * [5.2 Delete Vxlan commands](#52-delete-vxlan-commands)
 
 
 ## 1: Description
