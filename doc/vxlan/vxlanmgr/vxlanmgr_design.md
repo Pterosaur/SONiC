@@ -106,8 +106,8 @@ VXLAN_TABLE|{{vxlan_name}}
 ##### Device naming rules
 | Device                   | Name                           |
 |--------------------------|--------------------------------|
-| VXLAN                    | {{VXLAN_TUNNEL}}{{VNI}}        |
-| Bridge of VXLAN          | brvxlan{{VXLAN}}               |
+| VXLAN                    | Vxlan{{VNI}}                   |
+| Bridge of VXLAN          | Brvxlan{{VNI}}                 |
 ### 5.1 Create vxlan commands
 ```
 // Create vxlan device in linux kernel
