@@ -43,7 +43,7 @@ The responsibility of Vxlanmgrd is to create vxlan devices in kernel.
 ### 3.1 Task selector
 According to the framework of swss to listen the change events of config database and to do the corresponding tasks.
 ![](images/task_selector.png)
-### 3.2 Vxlan create taskgg
+### 3.2 Vxlan create task
 ![](images/vxlan_create_task.png)
 ### 3.3 Vxlan tunnel create task
 ![](images/vxlan_tunnel_create_task.png)
