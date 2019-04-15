@@ -30,59 +30,59 @@ According to the framework of swss to listen the change events of config databas
 ![](images/vxlan_tunnel_map_delete_task.png)
 
 
-## 3. Reference Tables
-### 3.1 Input Tables
-#### 3.1.1 CFG_VXLAN_TUNNEL_TABLE
+## 4. Reference Tables
+### 4.1 Input Tables
+#### 4.1.1 CFG_VXLAN_TUNNEL_TABLE
 ```
 VXLAN_TUNNEL|{{tunnel_name}} 
     "src_ip": {{ip_address}} 
     "dst_ip": {{ip_address}} (OPTIONAL)
 ```
-#### 3.1.2 CFG_VXLAN_TUNNEL_MAP_TABLE
+#### 4.1.2 CFG_VXLAN_TUNNEL_MAP_TABLE
 ```
 VXLAN_TUNNEL_MAP|{{tunnel_name}}|{{tunnel_map}}
     "vni": {{ vni_id}}
     "vlan": {{ vlan_id }}
 ```
-#### 3.1.3 CFG_VNET_TABLE
+#### 4.1.3 CFG_VNET_TABLE
 ```
 VNET|{{vnet_name}} 
     "vxlan_tunnel": {{tunnel_name}}
     "vni": {{vni}} 
     "peer_list": {{vnet_name_list}} (OPTIONAL)
 ```
-### 3.1.4 STATE_VRF_TABLE
+### 4.1.4 STATE_VRF_TABLE
 ```
 VRF_TABLE|{{vnet_name}}
     "state":"ok"
 ```
-### 3.2 Output Tables
-#### 3.2.1 APP_VXLAN_TUNNEL_TABLE
+### 4.2 Output Tables
+#### 4.2.1 APP_VXLAN_TUNNEL_TABLE
 ```
 VXLAN_TUNNEL_TABLE|{{tunnel_name}} 
     "src_ip": {{ip_address}} 
     "dst_ip": {{ip_address}}
 ```
-#### 3.2.2 APP_VXLAN_TUNNEL_MAP_TABLE
+#### 4.2.2 APP_VXLAN_TUNNEL_MAP_TABLE
 ```
 VXLAN_TUNNEL_MAP_TABLE|{{tunnel_name}}:{{tunnel_map}}
     "vni": {{ vni_id}}
     "vlan": {{ vlan_id }}
 ```
-#### 3.2.3 STATE_VXLAN_TABLE
+#### 4.2.3 STATE_VXLAN_TABLE
 ```
 VXLAN_TABLE|{{vxlan_name}}
     "state":"ok"
 ```
 
-## 4. Linux Command
-## 4.1 Device naming rules
+## 5. Linux Command
+## 5.1 Device naming rules
 | Device                   | Name                           |
 |--------------------------|--------------------------------|
 | VXLAN                    | {{VXLAN_TUNNEL}}{{VNI}}        |
 | Bridge of VXLAN          | brvxlan{{VXLAN}}               |
-## 4.2 Linux Commands
-### 4.2.1 Create commands
+## 5.2 Linux Commands
+### 5.2.1 Create commands
 ```
 // Create vxlan device in linux kernel
 ip link add {{VXLAN}} type vxlan id {{VNI}} local {{SOURCE_IP}} dstport 4789
@@ -97,7 +97,7 @@ ip link set dev {{BRIDGE}} master {{VNET}}
 // Activate the bridge of vxlan
 ip link set dev {{BRIDGE}} up
 ```
-### 4.2.2 Delete commands
+### 5.2.2 Delete commands
 ```
 // Detach bridge from vnet
 ip link set dev {{BRIDGE}} nomaster
