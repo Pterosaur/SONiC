@@ -12,9 +12,9 @@
 * [3: Modules and Flowchart](#3-Modules-and-Flowchart)
     * [3.1 Task selector](#31-Task-selector)
     * [3.2 Vxlan create task](#32-Vxlan-create-Task)
-    * [3.3 Vxlan tunnel create task](#33-Vxlan-tunnel-create-Task)
-    * [3.4 Vxlan tunnel map create task](#34-Vxlan-tunnel-map-create-Task)
-    * [3.5 Vxlan delete task](#35-Vxlan-delete-Task)
+    * [3.3 Vxlan delete task](#33-Vxlan-delete-Task)
+    * [3.4 Vxlan tunnel create task](#34-Vxlan-tunnel-create-Task)
+    * [3.5 Vxlan tunnel map create task](#35-Vxlan-tunnel-map-create-Task)
     * [3.6 Vxlan tunnel delete task](#36-Vxlan-tunnel-delete-Task)
     * [3.7 Vxlan tunnel map delete task](#37-Vxlan-tunnel-map-delete-Task)
 * [4: Referenced Table](#4-Referenced-Table)
@@ -45,12 +45,13 @@ According to the framework of swss to listen the change events of config databas
 ![](images/task_selector.png)
 ### 3.2 Vxlan create task
 ![](images/vxlan_create_task.png)
-### 3.3 Vxlan tunnel create task
-![](images/vxlan_tunnel_create_task.png)
-### 3.4 Vxlan tunnel map create task
-![](images/vxlan_tunnel_map_create_task.png)
-### 3.5 Vxlan delete task
+![](images/vxlan_create_task.svg)
+### 3.3 Vxlan delete task
 ![](images/vxlan_delete_task.png)
+### 3.4 Vxlan tunnel create task
+![](images/vxlan_tunnel_create_task.png)
+### 3.5 Vxlan tunnel map create task
+![](images/vxlan_tunnel_map_create_task.png)
 ### 3.6 Vxlan tunnel delete task
 ![](images/vxlan_tunnel_delete_task.png)
 ### 3.7 Vxlan tunnel map delete task
