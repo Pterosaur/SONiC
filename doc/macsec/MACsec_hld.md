@@ -58,6 +58,8 @@
       - [Egress Flow](#egress-flow)
       - [State Change Actions](#state-change-actions)
       - [MACsec Actions](#macsec-actions)
+  - [3.5 Function Modules](#35-function-modules)
+    - [3.5.1 Primary/Fallback CAK rotation](#351-primaryfallback-cak-rotation)
 - [4 Flow](#4-flow)
   - [4.1 Init Port](#41-init-port)
   - [4.2 MACsec Init](#42-macsec-init)
@@ -583,7 +585,7 @@ The following list all MACsec control instructions:
 |    delete_transmit_sa    | DEL APP_DB[MACSEC_EGRESS_SA]<br>WAIT DEL STATE_DB[MACSEC_EGRESS_SA]                                       |                                                                                                                                    |
 |    enable_transmit_sa    | SET APP_DB[MACSEC_EGRESS_SC:ENCODING_AN]=PARAM<br>WAIT SET STATE_DB[MACSEC_EGRESS_SA]                     |                                                                                                                                    |
 |   disable_transmit_sa    |                                                                                                           |                                                                                                                                    |
-|   get_max_sa_per_sc      | GET STATE_DB[MACSEC_PORT:MAX_SA_PER_SC]                                                                   | Query max SAs than be active on an SC                                                                                                                                      |
+|    get_max_sa_per_sc     | GET STATE_DB[MACSEC_PORT:MAX_SA_PER_SC]                                                                   | Query max SAs than be active on an SC                                                                                              |
 
 ***WAIT : To subscribe the target table and to use the select operation to query the expected message***
 
@@ -789,6 +791,32 @@ All boxes with black edge are components of virtual SAI and all boxes with purpl
   - `ip macsec show <macsec_dev>`
 
 ***MACsec egress sc will be automatically created/delete when the MACsec port is created/deleted***
+
+### 3.5 Function Modules
+
+#### 3.5.1 Primary/Fallback CAK rotation
+
+Initialization stage:
+
+![primary fallback initialization](images/primary-fallback-initialization.png)  
+
+Update stage:
+
+| Old active session | New configuration session | Is new configuration match | New active session |
+| ------------------ | ------------------------- | -------------------------- | ------------------ |
+| Primary            | Primary                   | yes                        | New Primary        |
+| Primary            | Primary                   | No                         | Old Primary        |
+| Primary            | Fallback                  | Yes                        | Old Primary        |
+| Primary            | Fallback                  | No                         | Old Primary        |
+| Fallback           | Primary                   | yes                        | New Primary        |
+| Fallback           | Primary                   | No                         | Old Primary        |
+| Fallback           | Fallback                  | Yes                        | New Fallback       |
+| Fallback           | Fallback                  | No                         | Old Fallback       |
+| None               | Primary                   | Yes                        | New Primary        |
+| None               | Primary                   | None                       | None               |
+| None               | Fallback                  | Yes                        | New Fallback       |
+| None               | Fallback                  | None                       | None               |
+
 
 ## 4 Flow
 
